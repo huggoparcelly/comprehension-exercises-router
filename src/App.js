@@ -6,11 +6,15 @@ import Users from './components/Users';
 
 class App extends Component {
   render() {
+    const { greetingMessage } = this.props
     return (
       <BrowserRouter>
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
-        <Route path="/users" component={Users} />
+        <Route path="/users" render={ (props) =>
+          <Users {... props} greetingMessage = 'Good Morning'/>
+        }   
+        />
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/about">About</Link></li>
